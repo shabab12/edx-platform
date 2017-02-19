@@ -9,48 +9,342 @@ from openedx.core.djangolib.markup import HTML, Text
 %>
 
 <main id="main" aria-label="Content" tabindex="-1">
-    <section class="home">
-      <header>
-        <div class="outer-wrapper">
-          <div class="title">
-            <div class="heading-group">
-              % if homepage_overlay_html:
-                ${homepage_overlay_html | n, decode.utf8}
-              % else:
-                  ## Translators: 'Open edX' is a registered trademark, please keep this untranslated. See http://open.edx.org for more information.
-                  <h1>${Text(_(u"Welcome to the Open edX{registered_trademark} platform!")).format(registered_trademark=HTML("<sup style='font-size: 65%'>&reg;</sup>"))}</h1>
-                  ## Translators: 'Open edX' is a registered trademark, please keep this untranslated. See http://open.edx.org for more information.
-                  <p>${_("It works! This is the default homepage for this Open edX instance.")}</p>
-              % endif
+
+<div class="" id="content">
+
+<!-- amir add this script in index.html-->
+<script>
+	if ($("#backgroundvideo")){$("#global-navigation").hide()}
+</script>
+
+<main id="main" aria-label="Content" tabindex="-1">
+    <!-- amir change style main slider and add the script in index.html-->
+<section id="main-slider" 
+style="
+    max-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    ">
+<script>
+var cond = $.browser.device = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
+if(cond){
+        $("#main-slider").hide();
+	document.getElementById("mobile-slider").style.display = "block";
+}
+
+</script> 
+    <!-- end amir change style main slider and add the script in index.html-->
+
+
+<!-- amir pc first whole page video -->
+<div class="carousel slide">
+    <div class="carousel-inner">
+        <div>
+            <div>
+                <div class="row">
+                    <div id="firstrow" class="row availables-courses" style="
+                        position: absolute;
+                        top: 10%;
+                        z-index: 9;
+                        left: 0;
+                        right: 0;
+                        margin: 0 auto;
+                        -moz-transform: translateY(-50%);">
+                    <div class="col-md-4" style="margin-left: 320px;margin-top: -50px;">
+                        <img src="https://s3.amazonaws.com/netacademy/naser.png" style="
+                            width: 55%;
+                            height: 30%;
+                            display: block;
+                            margin:auto;
+                            margin-bottom: 40px;
+                            float: right;
+                            ">
+                            <br><br>
+                    </div>
+
+                    <div id="secondnav" class="col-md-4" style="text-align:right;float:right">
+                        <a href="/register" class="animated rubberBand" style="
+	                    block;
+                            ease-in-out;
+                            background:transparent;
+                            color:#aa9e9e;
+                            padding: 14px;
+                            text-align: center;
+                            border-radius:25px;
+                            text-transform: uppercase;
+                            font-weight:900;
+			    border: 2px solid;
+			    padding-right: 25px;
+    			    padding-left: 25px;">  تسجيل جدید
+                        
+                        </a> 
+    
+    
+                        <a href="/login" class="animated rubberBand" style="
+	
+                            block;
+                            ease-in-out;
+                            background: transparent;
+                            color: #aa9e9e;
+                            padding: 14px;
+                            text-align: center;
+                            border-radius:25px;
+                            text-transform: uppercase;
+                            font-weight:700;
+			    margin-left: 20px;
+    			     margin-right: 20px;font-weight:900;border: 2px solid;padding-right: 25px;padding-left: 30px;">
+                            ${_("Sign in")}</a>
+
+                    <div style="margin-left: 50px;">
+                        <img src="https://s3.amazonaws.com/nadir/course_name.png" style="
+                            height: 100%;
+                            display: block;
+                            margin:auto;
+                            margin-bottom: 40px;
+                            margin-top:35%;
+			    margin-right: 300px;
+    			    width: 170%;">
+                     </div>
+
+</div>
+
+                    </div>
+
+
+
+                    <video muted id="backgroundvideo" autoplay="" loop="" 
+                                style="width:100%;filter: url(https://www.proversity.org/static/images/css/pattern2.png);-webkit-filter:blur(6px);-ms-filter: blur(6px);-o-filter: blur(6px);">
+                                <source src="https://0.s3.envato.com/h264-video-previews/9c15f17d-f194-43cb-8825-cd6e5ba914f0/1127167.mp4" type="video/mp4">
+                                        Your browser does not support the video tag. I suggest you upgrade your browser.
+                                <source src="https://0.s3.envato.com/h264-video-previews/9c15f17d-f194-43cb-8825-cd6e5ba914f0/1127167.mp4" type="video/webm">
+                                        Your browser does not support the video tag. I suggest you upgrade your browser.
+                    </video>
+                            
+                    <div id="backgroundimg" class="poster hidden">
+            			<img id="img" src="https://s3.amazonaws.com/netacademy/White-Board.jpg" alt="">
+       			    </div>
+
+                        </div>
+                    </div>
+                </div><!--/.item-->
+
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+    </section>
+    <!-- end amir pc first whole page video -->
+
+
+
+
+
+
+<!-- amir mobile slider -->
+<section id="mobile-slider" style="display:none">
+<script>
+	var cond = $.browser.device = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
+	if(cond){
+        	document.getElementById("mobile-slider").style.display = "block";
+	}
+</script>
+ <div class="row availables-courses" style="
+    top: 10%;
+    left: 0;
+    right: 0;
+    margin: 20% auto;
+    -moz-transform: translateY(-50%);
+"><div class="col-md-12">
+            <img src="https://s3.amazonaws.com/netacademy/naser.png" style="
+    width: 270px;
+    height: 20%;
+    display: block;
+    margin:auto;
+">
+
+<img src="https://s3.amazonaws.com/nadir/coursenamee.png" style="
+			width:350px;
+    			display: block;
+    			margin: auto;">
+
+
+<br><br>
             </div>
-            % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
-              <div class="course-search">
-                <form method="get" action="/courses">
-                  <label><span class="sr">${_("Search for a course")}</span>
-                    <input class="search-input" name="search_query" type="text" placeholder="${_("Search for a course")}"></input>
-                  </label>
-                  <button class="search-button" type="submit">
-                    <span class="icon fa fa-search" aria-hidden="true"></span><span class="sr">${_("Search")}</span>
-                  </button>
-                </form>
-              </div>
-            % endif
+</div>
+</section>
+<!-- end amir mobile slider -->
+<!--
+<section id="" style="
+    background: white;
+">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-sm-12">
+  <h1 style="
+    font-size: 32px !important;
+    font-family: 'Baloo Bhaina', cursive;
+">Features</h1>
+      <h2 style="
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Atma', cursive;
+">Lorem ipsum dolor sit ame consectetur adipisicing elit</h2> </div>
+    </div>
+  <div class="row" style="
+    margin-top: 50px;
+">
+  
+      <div class="icon-main col-md-3 col-sm-6 wow fadeInDown animated" style="background-color: rgb(255, 255, 255); visibility: visible; animation-name: fadeInDown;">
+        <div class="step" style="
+    height: 350px;
+    padding: 10px 20px;
+    text-align: center;
+    margin: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+">
+          <img src="http://learn-moocit.fr//static/themes/edx-theme/images/a_create.44d953093340.png" style="
+    text-align: center;
+">
+          <h3 style="
+    font-size: 25px;
+    font-weight: lighter;
+    margin-top: 10px;
+">Concevoir</h3>
+          <p class="title-icon" style="
+    color: inherit;
+    font: -webkit-control;
+    margin: 0 0 1em;
+    font-size: 16px;
+    margin-top: 10px;
+">Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
+        </div>
+        
+      </div>
+       <div class="icon-main col-md-3 col-sm-6 wow fadeInDown animated" style="padding-left: 15px; padding-right: 15px; background-color: rgb(255, 255, 255); visibility: visible; animation-name: fadeInDown;">
+        <div class="step" style="
+    height: 350px;
+    padding: 10px 20px;
+    text-align: center;
+    margin: auto;
+">
+          <img src="http://learn-moocit.fr//static/themes/edx-theme/images/a_launch.0751c816d553.png" style="
+    text-align: center;
+">
+          <h3 style="
+    font-size: 25px;
+    font-weight: lighter;
+    margin-top: 10px;
+">Lancer</h3>
+          <p style="color: inherit;font: -webkit-control;margin: 0 0 1em;font-size: 16px;margin-top: 10px;">Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
+        </div>
+        
+      </div>
+       <div class="icon-main col-md-3 col-sm-6 wow fadeInDown animated" style="padding-left: 15px; padding-right: 15px; background-color: rgb(255, 255, 255); visibility: visible; animation-name: fadeInDown;">
+        <div class="step" style="
+    height: 350px;
+    padding: 10px 20px;
+    text-align: center;
+    margin: auto;
+">
+          <img src="http://learn-moocit.fr//static/themes/edx-theme/images/a_animate.90d9231d1b6f.png" style="
+    text-align: center;
+">
+          <h3 style="
+    font-size: 25px;
+    font-weight: lighter;
+    margin-top: 10px;
+">Animer</h3>
+          <p style="color: inherit;font: -webkit-control;margin: 0 0 1em;font-size: 16px;margin-top: 10px;">Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
+        </div>
+        
+      </div>
+       <div class="icon-main col-md-3 col-sm-6 wow fadeInDown animated" style="padding-left: 15px; padding-right: 15px; background-color: rgb(255, 255, 255); visibility: visible; animation-name: fadeInDown;">
+        <div class="step" style="
+    height: 350px;
+    padding: 10px 20px;
+    text-align: center;
+    margin: auto;
+">
+          <img src="http://learn-moocit.fr//static/themes/edx-theme/images/a_evaluate.c51bd9243051.png" style="text-align: center;">
+          <h3 style="
+    font-size: 25px;
+    font-weight: lighter;
+    margin-top: 10px;
+">Evaluer</h3>
+          <p style="color: inherit;font: -webkit-control;margin: 0 0 1em;font-size: 16px;margin-top: 10px;">Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
+         </div>
+         </div>
+ 
+    </div>
+      </div>
+    </section> -->
 
-          </div>
+<!-- <section id="courses" class="courses-container service-item" style="background:#efefef;">
+       <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 center wow fadeInDown">
+                <h2 style="margin:0 auto;font-family: 'Baloo Bhaina', cursive;
+    font-size: 40px;margin-top:30px">دوراتنا</h2>
+            </div>
 
-          % if show_homepage_promo_video:
-            <a href="#video-modal" class="media" rel="leanModal">
-              <div class="hero">
-                <div class="play-intro"></div>
+
+      % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
+        <div class="col-md-12 col-sm-12 col-xs-12 courses" stylee="width: initial;">
+            <ul class="courses-listing">
+            ## limiting the course number by using HOMEPAGE_COURSE_MAX as the maximum number of courses
+            %for course in courses[:settings.HOMEPAGE_COURSE_MAX]:
+              <div id="course" class="courses-listing-item col-sm-6 col-md-3 col-xs-12" style="max-width: 300px">
+                <%include file="course.html" args="course=course" />
               </div>
-            </a>
-          % endif
+            %endfor
+            </ul>
+        </section>
+        ## in case there are courses that are not shown on the homepage, a 'View all Courses' link should appear
+        <div class="row" style="display:none">
+                <div class="columns medium-12">
+                        <div style="text-align: center;padding-bottom: 60px;">
+                                <a style="
+    color: white;
+    align-content: center;
+    font-size: 21px;
+    line-height: 1.5em;
+    font-weight: 600;
+    border-radius: 4px;
+    text-decoration: none;
+    background-color: #f18a41;
+    box-shadow: 0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24)!important;
+    opacity: .9;
+    -webkit-transition: box-shadow .2s,opacity .2s!important;
+    transition: box-shadow .2s,opacity .2s!important;
+    color: #fff;
+text-shadow: none;
+    padding: 6px 18px;
+    margin-top: 10px;
+    border: 0;
+" href="/courses">More courses</a>
+                        </div>
+                </div>
         </div>
 
-      </header>
-      <%include file="${courses_list}" />
+      % endif
 
     </section>
+  </section>
+</section>
+-->
+<script>
+$( document ).ready(function() {
+if ($.browser.mozilla) {
+   $("#main-slider .col-md-12 img").css("margin-top","480px");
+}
+var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+     // Do Firefox-related activities
+   $("#firstrow").css("margin-top","200px")
+}
+});
+</script>
+
+
+
 </main>
 
 % if show_homepage_promo_video:

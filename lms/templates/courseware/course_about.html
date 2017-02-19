@@ -109,7 +109,10 @@ from openedx.core.lib.courses import course_image_url
 
 <section class="course-info">
   <header class="course-profile">
-    <div class="intro-inner-wrapper">
+    <div class="intro-inner-wrapper" style="
+    margin-top: -140px;
+    height: 260px;
+">
       <div class="table">
       <section class="intro">
         <div class="heading-group">
@@ -202,7 +205,7 @@ from openedx.core.lib.courses import course_image_url
       </div>
   </header>
 
-  <div class="container">
+  <div class="container" style="padding: 50px;">
     <div class="details">
       % if staff_access and studio_url is not None:
         <div class="wrap-instructor-info studio-view">
@@ -300,7 +303,6 @@ from openedx.core.lib.courses import course_image_url
       %endif
 
   </div>
-
   </div>
 </div>
 

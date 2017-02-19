@@ -69,8 +69,11 @@
 <div class="toggle-form">
     <div class="section-title">
         <h2>
-            <span class="text"><%- gettext("Already have an account?") %></span>
         </h2>
     </div>
-    <button class="nav-btn form-toggle" data-type="login"><%- gettext("Sign in") %></button>
+    <button style="margin-top: 35px;" class="nav-btn form-toggle" data-type="login"><%- gettext("Sign in") %></button>
 </div>
+<script>
+$(".checkbox-honor_code").css("display","none")
+$('#register-honor_code').prop('checked', true);
+</script>

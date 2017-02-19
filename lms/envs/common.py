@@ -97,7 +97,7 @@ FEATURES = {
 
     'ENABLE_MASQUERADE': True,  # allow course staff to change to student view of courseware
 
-    'ENABLE_SYSADMIN_DASHBOARD': False,  # sysadmin dashboard, to see what courses are loaded, to delete & load courses
+    'ENABLE_SYSADMIN_DASHBOARD': True,  # sysadmin dashboard, to see what courses are loaded, to delete & load courses
 
     'DISABLE_LOGIN_BUTTON': False,  # used in systems where login is automatic, eg MIT SSL
 
@@ -258,7 +258,7 @@ FEATURES = {
 
     # Expose Mobile REST API. Note that if you use this, you must also set
     # ENABLE_OAUTH2_PROVIDER to True
-    'ENABLE_MOBILE_REST_API': False,
+    'ENABLE_MOBILE_REST_API': True,
 
     # Enable the combined login/registration form
     'ENABLE_COMBINED_LOGIN_REGISTRATION': False,
@@ -788,15 +788,15 @@ ROOT_URLCONF = 'lms.urls'
 # NOTE: Please set ALLOWED_HOSTS to some sane value, as we do not allow the default '*'
 
 # Platform Email
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'registration@example.com'
-DEFAULT_FEEDBACK_EMAIL = 'feedback@example.com'
-SERVER_EMAIL = 'devops@example.com'
-TECH_SUPPORT_EMAIL = 'technical@example.com'
-CONTACT_EMAIL = 'info@example.com'
-BUGS_EMAIL = 'bugs@example.com'
-UNIVERSITY_EMAIL = 'university@example.com'
-PRESS_EMAIL = 'press@example.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'mlearning@sinapxis.com'
+DEFAULT_FEEDBACK_EMAIL = 'mlearning@sinapxis.com'
+SERVER_EMAIL = 'mlearning@sinapxis.com'
+TECH_SUPPORT_EMAIL = 'mlearning@sinapxis.com'
+CONTACT_EMAIL = 'mlearning@sinapxis.com'
+BUGS_EMAIL = 'mlearning@sinapxis.com'
+UNIVERSITY_EMAIL = 'mlearning@sinapxis.com'
+PRESS_EMAIL = 'mlearning@sinapxis.com'
 FINANCE_EMAIL = ''
 
 # Platform mailing address
@@ -1779,7 +1779,7 @@ CELERYD_HIJACK_ROOT_LOGGER = False
 
 # Suffix used to construct 'from' email address for bulk emails.
 # A course-specific identifier is prepended.
-BULK_EMAIL_DEFAULT_FROM_EMAIL = 'no-reply@example.com'
+BULK_EMAIL_DEFAULT_FROM_EMAIL = 'mlearning@sinapxis.com'
 
 # Parameters for breaking down course enrollment into subtasks.
 BULK_EMAIL_EMAILS_PER_TASK = 100
@@ -2315,7 +2315,7 @@ REGISTRATION_EXTRA_FIELDS = {
     'year_of_birth': 'optional',
     'mailing_address': 'optional',
     'goals': 'optional',
-    'honor_code': 'required',
+    'honor_code': 'optional',
     'terms_of_service': 'hidden',
     'city': 'hidden',
     'country': 'hidden',

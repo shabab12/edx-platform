@@ -27,6 +27,82 @@ from pipeline_mako import render_require_js_path_overrides
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Atma|Baloo+Bhaina|Bungee|Trocchi" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="https://s3.amazonaws.com/netacademy/graduation_cap.ico">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://s3.amazonaws.com/grupoburo/animate.css">
+<link rel="stylesheet" href="https://s3.amazonaws.com/grupoburo/lms-main-rtl.css">
+<link rel="stylesheet" href="https://s3.amazonaws.com/grupoburo/lms-main.css">
+<link rel="stylesheet" href="https://s3.amazonaws.com/grupoburo/responsive.css">
+<link rel="stylesheet" href="https://s3.amazonaws.com/grupoburo/font-awesome.css">
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-naskh" type="text/css"/>
+<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://s3.amazonaws.com/grupoburo/mail-style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://s3.amazonaws.com/grupoburo/wow.min.js"></script>
+<script src="https://s3.amazonaws.com/grupoburo/respond.min.js"></script>
+<script src="https://s3.amazonaws.com/grupoburo/main.js"></script>
+<script src="https://s3.amazonaws.com/grupoburo/html5shiv.js"></script>
+<style>
+#main #login-and-registration-container{
+background-image : url("https://s3.amazonaws.com/plmecuador/fondo_blanco.png");
+}
+.login-register .action-primary {
+background: #a0a0a4 !important;
+    box-shadow: 0 3px 2px 0 #ffffff !important;
+}
+.course-navigation .button-chapter{
+color: #34b7b7;
+}
+.wrapper-course-material .course-material .course-tabs .tab a {
+    font-size: 14px !important;
+}
+#msg-date-0 {
+display: none !important;
+}
+.info-wrapper .updates h1{
+    display: none!important;
+}
+
+.nav-item .bookmark-icon {
+display:none !important;
+}
+.bookmark-button-wrapper {
+display:none !important;
+}
+.bookmarks-list-button {
+display:none !important;
+}
+#seq_content .wrap-instructor-info{
+display:none !important;
+}
+.vert .wrap-instructor-info {
+display:none !important;
+}
+
+.wrapper-header .left{
+display:none !important;
+}
+.wrapper-course-details .course-info {
+display:none !important;
+}
+.preview-menu {
+display:none !important;
+}
+.wrapper-user-menu {
+display:none !important;
+}
+.handouts {
+display:none !important;
+}
+</style>
+
+<script>
+$( document ).ready(function() {
+	$("#msg-date-0").css("display","none");
+	if ($("#dropdown-list")){$("#king").css("margin-top","-30px")};
+});
+</script>
 
 ## Define a couple of helper functions to make life easier when
 ## embedding theme conditionals into templates. All inheriting
@@ -37,8 +113,8 @@ from pipeline_mako import render_require_js_path_overrides
 <%def name="pagetitle()" />
   <%block name="title">
       <title>
-       ${static.get_page_title_breadcrumbs(self.pagetitle())}
-      </title>
+      	برنامج اکتشاف
+	</title>
   </%block>
 
   % if not allow_iframing:
@@ -58,7 +134,6 @@ from pipeline_mako import render_require_js_path_overrides
 
   <script type="text/javascript" src="${static.url(jsi18n_path)}"></script>
 
-  <link rel="icon" type="image/x-icon" href="${static.url(static.get_value('favicon_path', settings.FAVICON_PATH))}" />
 
   <%static:css group='style-vendor'/>
   <%static:css group='${self.attr.main_css}'/>
@@ -135,7 +210,7 @@ from pipeline_mako import render_require_js_path_overrides
         <%include file="${static.get_template_path('header.html')}" args="online_help_token=online_help_token" />
     % endif
 
-    <div class="content-wrapper" id="content">
+    <div class="" id="content">
       ${self.body()}
       <%block name="bodyextra"/>
     </div>
@@ -154,6 +229,27 @@ from pipeline_mako import render_require_js_path_overrides
   <script type="text/javascript" src="${static.url('js/vendor/noreferrer.js')}" charset="utf-8"></script>
   <script type="text/javascript" src="${static.url('js/utils/navigation.js')}" charset="utf-8"></script>
   <%static:optional_include_mako file="body-extra.html" is_theming_enabled="True" />
+  <script>
+  		cond = document.getElementById("main-slider")
+		if (!cond){document.getElementById("global-navigation").style.display = "block";}
+  </script>
+
+<script>
+$( document ).ready(function() {
+	$(".date-summary-start-date").css("display","none");
+	$(".handouts").css("display","none");
+	$(".date-summary-container").css("display","none")
+});
+</script>
+                <script>
+                        $( document ).ready(function() {
+                                if ($(".course-name")){$("#logo").css("margin-top","-1px")};
+                                if ($(".course-name")){$("#king").css("margin-top","-0.1px")};
+                                if ($(".login-and-registration-container")){$("#logo").css("margin-top","-10px")};
+                                if ($(".login-and-registration-container")){$("#king").css("margin-top","-10px")}
+		});
+                </script>
+
 </body>
 </html>
 

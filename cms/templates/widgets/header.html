@@ -11,7 +11,11 @@
 
     <div class="wrapper wrapper-l">
       <h1 class="branding"><a href="/">
-        <img src="${static.url('images/studio-logo.png')}" alt="${settings.STUDIO_NAME}" />
+        <img src="https://s3.amazonaws.com/netacademy/naser.png" style="
+    min-height: 55px;
+    margin-bottom: -10px;
+    margin-top: -10px;
+" alt="${settings.STUDIO_NAME}" />
       </a></h1>
 
       % if context_course:
@@ -247,10 +251,18 @@
             <a href="${get_online_help_info(online_help_token)['doc_url']}" title="${_('Contextual Online Help')}" target="_blank">${_("Help")}</a>
           </li>
           <li class="nav-item nav-not-signedin-signup">
-            <a class="action action-signup" href="${reverse('signup')}">${_("Sign Up")}</a>
+            <a class="action action-signup" style="
+    background: transparent !important;
+    color: black !important;
+    border: 2px solid !important;
+" href="${reverse('signup')}">${_("Sign Up")}</a>
           </li>
           <li class="nav-item nav-not-signedin-signin">
-            <a class="action action-signin" href="${reverse('login')}">${_("Sign In")}</a>
+            <a style="
+    background: transparent !important;
+    color: black !important;
+    border: 2px solid !important;
+" class="action action-signin" href="${reverse('login')}">${_("Sign in")}</a>
           </li>
         </ol>
       </nav>

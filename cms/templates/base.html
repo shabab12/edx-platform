@@ -19,24 +19,35 @@ from openedx.core.djangolib.js_utils import (
 <!--[if lte IE 9]><html class="ie9 lte9" lang="${LANGUAGE_CODE}"><![endif]-->
 <!--[if !IE]><<!--><html lang="${LANGUAGE_CODE}"><!--<![endif]-->
   <head dir="${static.dir_rtl()}">
+    <link rel="icon" type="image/x-icon" href="https://s3.amazonaws.com/netacademy/graduation_cap.ico">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="https://s3.amazonaws.com/grupoburo/studio.css">
     <title>
-        <%block name="title"></%block> |
-        % if context_course:
-        <% ctx_loc = context_course.location %>
-        ${context_course.display_name_with_default} |
-        % elif context_library:
-        ${context_library.display_name_with_default} |
-        % endif
-        ${settings.STUDIO_NAME}
-    </title>
+برنامج اکتشاف
+	</title>
 
     <%
       jsi18n_path = "js/i18n/{language}/djangojs.js".format(language=LANGUAGE_CODE)
     %>
 
     <script type="text/javascript" src="${static.url(jsi18n_path)}"></script>
+    <style>.view-howitworks.not-signedin .content-cta .list-actions .action.action-primary {
+    background: transparent !important;
+    color: black !important;
+    border: 2px solid !important;
+	}
+.view-signup .content-primary form .form-actions .action-primary, .view-signin .content-primary form .form-actions .action-primary, .view-util .content-primary form .form-actions .action-primary {
+
+background: transparent !important;
+    color: black !important;
+    border: 2px solid !important;
+}
+
+
+
+
+</style>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="path_prefix" content="${EDX_ROOT_URL}">
 
@@ -117,5 +128,11 @@ from openedx.core.djangolib.js_utils import (
     </script>
     <%include file="widgets/segment-io-footer.html" />
     <div class="modal-cover"></div>
+
+<script>
+$( document ).ready(function() {
+$(".copy-show.is-shown").text(" هل تحتاج إلى مساعدة في استخدام برنامج اكتشاف")
+});
+</script>
   </body>
 </html>

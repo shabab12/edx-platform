@@ -177,6 +177,11 @@ from openedx.core.djangolib.markup import HTML, Text
             </div>
         </div>
     </div>
+<script>
+        //aspen =  document.querySelectorAll("a[href='/courses/course-v1:iktshaf+01+001/info']");
+        //if (aspen){window.location.href = '/courses/course-v1:iktshaf+01+001/info';}
+</script>
+
 </main>
 
 <div id="email-settings-modal" class="modal" aria-hidden="true">
@@ -241,3 +246,20 @@ from openedx.core.djangolib.markup import HTML, Text
     </form>
   </div>
 </div>
+<script>
+$( document ).ready(function() {
+                                
+if ($(".wrapper-course-details .course-title a").html()=="كيف تختار مسارك بعد الثانوية؟"){
+
+window.location.replace("http://elearning.shabab12.com/courses/course-v1:iktshaf+01+001/info");
+
+	
+
+} else {
+	window.location.replace("http://elearning.shabab12.com/courses/course-v1:iktshaf+01+001/about")
+	
+}
+if ($(".course-profile")){$("#logo").css("margin-top","-10px")};
+                                if ($(".course-profile")){$("#king").css("margin-top","-10px")};
+});
+</script>
