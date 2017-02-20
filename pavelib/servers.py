@@ -184,8 +184,10 @@ def run_all_servers(options):
     """
     Runs Celery workers, Studio, and LMS.
     """
-    settings = getattr(options, 'settings', DEFAULT_SETTINGS)
-    asset_settings = getattr(options, 'asset_settings', settings)
+    # settings = getattr(options, 'settings', DEFAULT_SETTINGS)
+    settings = 'dev'
+    # asset_settings = getattr(options, 'asset_settings', settings)
+    asset_settings = 'dev'
     worker_settings = getattr(options, 'worker_settings', 'dev_with_worker')
     fast = getattr(options, 'fast', False)
     optimized = getattr(options, 'optimized', False)
@@ -194,10 +196,14 @@ def run_all_servers(options):
         settings = OPTIMIZED_SETTINGS
         asset_settings = OPTIMIZED_ASSETS_SETTINGS
 
-    settings_lms = getattr(options, 'settings_lms', settings)
-    settings_cms = getattr(options, 'settings_cms', settings)
-    asset_settings_lms = getattr(options, 'asset_settings_lms', asset_settings)
-    asset_settings_cms = getattr(options, 'asset_settings_cms', asset_settings)
+    settings_lms = 'cms.dev'
+    # settings_lms = getattr(options, 'settings_lms', settings)
+    settings_cms = 'dev'
+    # settings_cms = getattr(options, 'settings_cms', settings)
+    asset_settings_lms = 'cms.dev'
+    # asset_settings_lms = getattr(options, 'asset_settings_lms', asset_settings)
+    asset_settings_cms = 'dev'
+    # asset_settings_cms = getattr(options, 'asset_settings_cms', asset_settings)
 
     if not fast:
         # First update assets for both LMS and Studio but don't collect static yet

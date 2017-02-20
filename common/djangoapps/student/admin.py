@@ -179,6 +179,7 @@ class UserAttributeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(UserTestGroup)
+admin.site.register(UserProfile)
 admin.site.register(CourseEnrollmentAllowed)
 admin.site.register(Registration)
 admin.site.register(PendingNameChange)

@@ -47,72 +47,20 @@ site_status_msg = get_site_status_msg(course_id)
 % endif
 </%block>
 
-
-<ul class="resnav2" id="myTopnav" style="margin-top: -50px;display:none">
-	<li><a class="active" href=""></a></li>
-	% if user.is_authenticated():
-		<li id="home"><a style="font-family: monospace;font-size: 18px;text-transform: uppercase;" href="/">أبدأ الدورة</a></li>
-                <li id="back"><a style="font-family: monospace;font-size: 18px;text-transform: uppercase;" href="javascript:history.back()">للخلف</a></li>
-		<li id="back"><a style="font-family: monospace;font-size: 18px;text-transform: uppercase;" href="/courses">استكشف دوراتك</a></li>
-                <li id="settings"><a style="font-family: monospace;font-size: 18px;text-transform: uppercase;" href="/account/settings">إعدادات الحساب</a></li>
-                <li id="profile"><a style="font-family: monospace;font-size: 18px;text-transform: uppercase;" href="/u/${user.username}">ملفي الشخصي</a></li>
-                <li id="logout"><a style="font-family: monospace;font-size: 18px;text-transform: uppercase;" href="/logout">أغلق الدورة</a></li>
-		<script>
-			$( document ).ready(function() {
-		             $(".header-courses").html("دوراتي")
-			     $(".enter-course").html("اذهب إلى الدورة")
-   			     $("#msg-date-0").css("display","none");
-		</script>
-            % else:
-                <li><a style="font-family: monospace;font-size: 18px;text-transform: uppercase;" href="/login">
-                            تسجيل الدخول</a></li>
-       		<li><a style="font-family: monospace;font-size: 18px;text-transform: uppercase;" href="/register">  تسجيل جدید</a></li>
-	 % endif
-  <li class="icon">
-    <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()"><img src="http://www.kaiquemeneghel.com.br/img/nav.png" style="
-    max-width: 20px;
-"></a>
-  </li>
-</ul>
-
-<script>
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "resnav2") {
-        x.className += " responsive";
-    } else {
-        x.className = "resnav2";
-    }
-}
-</script>
-
-<script>
-$( document ).ready(function() {
-$(".wrapper-header .primary .user-image-frame").css("display","none");
-$( ".wrapper-header .user .primary .user-link .sr" ).after("<p style='float: right; margin: 15px 15px 15px 5px;text-shadow:none'>أهلاً</p>");
-
-$( ".wrapper-header .user .primary").css("margin-top","12px");
-$(".header-global.slim .wrapper-header .course-header").css("margin-top","22px")
-});
-</script>
-
-
-
-
-
-
-  <header style="display:none;border:none;background:#fa8337 !important;height:105px;" id="global-navigation" class="header-global ${"slim" if course else ""}" >
+  <header style="" id="global-navigation" class="header-global ${"slim" if course else ""}" >
     <nav class="wrapper-header" aria-label="${_('Global')}">
-    <h1 class="logo" style="
-    float: right;
-">
-      <a href="${marketing_link('ROOT')}">
-        <%block name="navigation_logo">
-            <img src="${static.url(branding_api.get_logo_url())}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}"/>
-        </%block>
-      </a>
-    </h1>
-
+        <h1 class="logo">
+            <a href="${marketing_link('ROOT')}">
+                <%block name="navigation_logo">
+                    <img src="${static.url(branding_api.get_logo_url())}" alt="${_("{platform_name}").format(platform_name=static.get_platform_name())}" width="120"/>
+                </%block>
+            </a>
+        </h1>
+        <h1 class="logo2">
+            <a href="${marketing_link('ROOT')}">
+                    <img src="${static.url('images/sponsor.png')}" alt="${_("{platform_name}").format(platform_name=static.get_platform_name())}" width="130"/>
+            </a>
+        </h1>
 
       % if user.is_authenticated():
         <ol class="left nav-global list-inline authenticated">
@@ -146,7 +94,7 @@ $(".header-global.slim .wrapper-header .course-header").css("margin-top","22px")
       <%include file="user_dropdown.html"/>
 
       % if should_display_shopping_cart_func() and not (course and static.is_request_in_themed_site()): # see shoppingcart.context_processor.user_has_cart_context_processor
-        <ol class="user" style="float: none;">
+        <ol class="user">
           <li class="primary">
             <a class="shopping-cart" href="${reverse('shoppingcart.views.show_cart')}">
               <span class="icon fa fa-shopping-cart" aria-hidden="true"></span> ${_("Shopping Cart")}
@@ -155,6 +103,19 @@ $(".header-global.slim .wrapper-header .course-header").css("margin-top","22px")
         </ol>
       % endif
     % else:
+          <ol class="right nav-courseware list-inline">
+              <%block name="navigation_sign_in">
+                  <li class="item nav-courseware-01">
+                      % if not settings.FEATURES['DISABLE_LOGIN_BUTTON']:
+                          % if course and settings.FEATURES.get('RESTRICT_ENROLL_BY_REG_METHOD') and course.enrollment_domain:
+                              <a style="" class="btn btn-login" href="${reverse('course-specific-login', args=[course.id.to_deprecated_string()])}${login_query()}">${_("Sign in")}</a>
+                          % else:
+                              <a style="" class="btn btn-login" href="/login${login_query()}">${_("Sign in")}</a>
+                          % endif
+                      % endif
+                  </li>
+              </%block>
+          </ol>
       <ol style="float:right" class="left list-inline nav-global">
         <%block name="navigation_global_links">
           % if static.get_value('ENABLE_MKTG_SITE', settings.FEATURES.get('ENABLE_MKTG_SITE', False)):
@@ -181,80 +142,16 @@ $(".header-global.slim .wrapper-header .course-header").css("margin-top","22px")
             %endif
             % if course and settings.FEATURES.get('RESTRICT_ENROLL_BY_REG_METHOD') and course.enrollment_domain:
               <li class="item nav-global-04">
-                <a style="margin-top: -14px !important;
-    background: transparent !important;
-    color: #fff !important;
-    padding: 12px;
-    text-align: center;
-    text-shadow: none;
-    font-weight: 700;
-    letter-spacing: 0;
-    margin-left: 22px;
-    font-size: 14px !important;
-    border: 2px solid #fff !important;
-    border-radius: 25px;" class="btn-neutral" href="${reverse('course-specific-register', args=[course.id.to_deprecated_string()])}">  تسجيل جدید
+                <a style="" class="btn-neutral" href="${reverse('course-specific-register', args=[course.id.to_deprecated_string()])}">  تسجيل جدید
                         
                         </a>
               </li>
             % else:
               <li class="item nav-global-04">
-                <a style="margin-top: -14px !important;
-    background: transparent !important;
-    color: #fff !important;
-    padding: 12px;
-    text-align: center;
-    text-shadow: none;
-    font-weight: 700;
-    letter-spacing: 0;
-    margin-left: 22px;
-    font-size: 14px !important;
-    border: 2px solid #fff !important;
-    border-radius: 25px;
-    padding-right: 20px;
-    padding-left: 20px;" class="btn-neutral" href="/register${login_query()}">  تسجيل جدید
-                        
-                        </a>
+                <a class="btn-neutral" href="/register${login_query()}">  تسجيل جدید</a>
               </li>
             % endif
           % endif
-        </%block>
-      </ol>
-     <script>if($("#myTopnav").css("display")=="block"){document.getElementById("global-navigation").style.display="none"}</script>
-      <ol class="right nav-courseware list-inline">
-        <%block name="navigation_sign_in">
-          <li class="item nav-courseware-01">
-            % if not settings.FEATURES['DISABLE_LOGIN_BUTTON']:
-              % if course and settings.FEATURES.get('RESTRICT_ENROLL_BY_REG_METHOD') and course.enrollment_domain:
-                <a style="text-transform: uppercase;
-    background: transparent;
-    color: #fff;
-    padding: 11px;
-    text-align: center;
-    text-shadow: none;
-    font-weight: 700;
-    letter-spacing: 0;
-    box-shadow: none;
-    font-size: 14px;
-    border: 2px solid;
-    border-radius: 25px;
-    margin-top: -6px;" class="btn btn-login" href="${reverse('course-specific-login', args=[course.id.to_deprecated_string()])}${login_query()}">${_("Sign in")}</a>
-              % else:
-                <a style="text-transform: uppercase;
-    background: transparent;
-    color: #fff;
-    padding: 11px;
-    text-align: center;
-    text-shadow: none;
-    font-weight: 700;
-    letter-spacing: 0;
-    box-shadow: none;
-    font-size: 14px;
-    border: 2px solid;
-    border-radius: 25px;
-    margin-top: -6px;"  class="btn btn-login" href="/login${login_query()}">${_("Sign in")}</a>
-              % endif
-            % endif
-          </li>
         </%block>
       </ol>
     % endif
@@ -286,26 +183,8 @@ $(".header-global.slim .wrapper-header .course-header").css("margin-top","22px")
       </ol>
       % endif
       % endif
-
-<h1 class="logo" style="float: left;">
-    <a href="/">
-       <img id="king" src="https://s3.amazonaws.com/nadir/King+Khalid+Foundation+Logo.jpg" 
-	    style="margin-top:-0.4px;background: white;max-height: 120px;min-height: 120px;" alt="Home Page">
-      </a>
-    </h1>
     </nav>
 </header>
-    % if course:
-         <h2 class="course-header" style="text-align: center;margin-top: 30px;margin-bottom: -30px;">
-        <%
-        display_name = course.display_name_with_default
-        if settings.FEATURES.get('CUSTOM_COURSES_EDX', False):
-          ccx = get_current_ccx(course.id)
-          if ccx:
-            display_name = ccx.display_name
-        %>
-        <span class="course-name" style="font-family: DroidArabicNaskhRegular;text-shadow: none !important;font-size: 26px;">${display_name}</span></h2>
-      % endif
 
 % if course:
 <!--[if lte IE 9]>

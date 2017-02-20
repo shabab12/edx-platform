@@ -439,7 +439,7 @@ $container-bg: $white !default;
 
 // header
 $header-image: linear-gradient(-90deg, rgba(255,255,255, 1), rgba(230,230,230, 0.9)) !default;
-$header-bg: $white !default;
+$header-bg: rgba(0, 0, 0, 0) linear-gradient(to right, #119c93 0%, #7ee8e1 6%, #04bbaf 18%, #4fe0d2 37%, #01aba0 78%, #74e7fb 93%, #119c95 100%) repeat scroll 0 0;
 $header-graphic-super-color: $m-blue-d1;
 $header-graphic-sub-color: $m-gray-d2;
 $header-sans-serif: 'Open Sans', Arial, Helvetica, sans-serif !default;

@@ -8,7 +8,7 @@
   background: $header-bg;
   position: relative;
   width: 100%;
-  height: 76px;
+  height: 120px;
 
   .wrapper-header {
     @include clearfix();
@@ -21,6 +21,20 @@
 
   h1.logo {
     @include float(left);
+    @include margin(-18px, 39px, 0, 0);
+    position: absolute;
+    background-color: #fff;
+    padding: 50px 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 2px 2px;
+
+    a {
+      display: block;
+    }
+  }
+
+  h1.logo2 {
+    @include float(right);
     @include margin(-2px, 39px, 0, 0);
     position: relative;
 
@@ -116,7 +130,7 @@
     @include float(right);
     @extend %ui-print-excluded;
     padding-left: 0;
-    margin: 0;
+    margin: 20px 35px 0;
 
     .settings-language-form {
       margin: 4px;
@@ -259,8 +273,9 @@
   }
 
   .nav-global {
-    margin-top: ($baseline/2);
+    margin-top: ($baseline*1.5);
     list-style: none;
+    @include margin-left(145px);
     @include float(left);
     .tab-nav-item{
       display: flex;
@@ -298,7 +313,7 @@
       a {
         display:block;
         padding: ($baseline/4);
-        color: $link-color;
+        color: #fff;
         font-weight: 600;
 
         &:hover, &:focus, &:active {
@@ -323,15 +338,20 @@
   }
 
   .nav-courseware {
-    @include float(right);
-    margin-top: ($baseline/4);
+    @include float(left);
+    margin-top: ($baseline*1.5);
     list-style: none;
 
     li, div {
       display: inline-block;
 
       .btn {
-        @extend %m-btn-primary;
+        color: #fff !important;
+        font-weight: 600;
+        @include padding-right(40px);
+        font-size: 14px;
+        line-height: 24px;
+        //@extend %m-btn-primary;
       }
     }
   }
@@ -353,6 +373,7 @@
   a {
     text-decoration: none;
     color: $link-color !important;
+    color: #fff;
   }
 }
 
@@ -861,6 +882,9 @@
 .view-login .header-global-new .btn-login {
   text-decoration: none;
   color: $courseware-hover-color;
+  background: none !important;
+  box-shadow: 0 none !important;
+  font-weight: normal;
 }
 
 // marketing site design syncing

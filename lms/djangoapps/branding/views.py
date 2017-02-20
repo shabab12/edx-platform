@@ -22,6 +22,8 @@ from util.json_request import JsonResponse
 import branding.api as branding_api
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 
+from django.conf import settings
+
 log = logging.getLogger(__name__)
 
 
@@ -58,7 +60,8 @@ def index(request):
         if configuration_helpers.get_value(
                 'ALWAYS_REDIRECT_HOMEPAGE_TO_DASHBOARD_FOR_AUTHENTICATED_USER',
                 settings.FEATURES.get('ALWAYS_REDIRECT_HOMEPAGE_TO_DASHBOARD_FOR_AUTHENTICATED_USER', True)):
-            return redirect(reverse('dashboard'))
+            # return redirect(reverse('dashboard'))
+            return redirect(reverse('about_course', args=[unicode(settings.COURSE_ID_ABOUT_LANDING)]))
 
     if settings.FEATURES.get('AUTH_USE_CERTIFICATES'):
         from external_auth.views import ssl_login
@@ -87,7 +90,8 @@ def index(request):
 
     #  we do not expect this case to be reached in cases where
     #  marketing and edge are enabled
-    return student.views.index(request, user=request.user)
+    return redirect(reverse('about_course', args=[unicode(settings.COURSE_ID_ABOUT_LANDING)]))
+    # return student.views.index(request, user=request.user)
 
 
 @ensure_csrf_cookie

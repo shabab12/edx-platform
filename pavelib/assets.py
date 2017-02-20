@@ -22,7 +22,7 @@ from openedx.core.djangoapps.theming.paver_helpers import get_theme_paths
 
 # setup baseline paths
 
-ALL_SYSTEMS = ['lms', 'studio']
+ALL_SYSTEMS = ['lms']
 COFFEE_DIRS = ['lms', 'cms', 'common']
 
 LMS = 'lms'
@@ -52,7 +52,7 @@ NPM_INSTALLED_LIBRARIES = [
     'underscore.string/dist/underscore.string.js',
     'picturefill/dist/picturefill.js',
     'backbone/backbone.js',
-    'edx-ui-toolkit/node_modules/backbone.paginator/lib/backbone.paginator.js',
+    'backbone.paginator/lib/backbone.paginator.js',
 ]
 
 # Directory to install static vendor files
@@ -134,7 +134,7 @@ def get_theme_sass_dirs(system, theme_dir):
     :param system: name if the system for which to compile sass e.g. 'lms', 'cms'
     :param theme_dir: absolute path of theme for which to compile sass files.
     """
-    if system not in ('lms', 'cms'):
+    if system not in ('lms'):
         raise ValueError('"system" must either be "lms" or "cms"')
 
     dirs = []
@@ -442,7 +442,7 @@ def compile_sass(options):
         '/edx/app/edxapp/edx-platform/themes' and '/edx/app/edxapp/edx-platform/common/test/'.
 
     """
-    debug = options.get('debug')
+    debug = options.get('quite')
     force = options.get('force')
     systems = getattr(options, 'system', ALL_SYSTEMS)
     themes = getattr(options, 'themes', [])
@@ -494,7 +494,7 @@ def compile_sass(options):
             is_successful = _compile_sass(
                 system=system,
                 theme=path(theme) if theme else None,
-                debug=debug,
+                debug=False,
                 force=force,
                 timing_info=timing_info
             )
@@ -543,12 +543,12 @@ def _compile_sass(system, theme, debug, force, timing_info):
     dry_run = tasks.environment.dry_run
 
     # determine css out put style and source comments enabling
-    if debug:
-        source_comments = True
-        output_style = 'nested'
-    else:
-        source_comments = False
-        output_style = 'compressed'
+    # if debug:
+        # source_comments = True
+        # output_style = 'nested'
+    # else:
+    source_comments = False
+    output_style = 'compressed'
 
     for dirs in sass_dirs:
         start = datetime.now()
@@ -690,7 +690,8 @@ def execute_compile_sass(args):
         options = ""
         options += " --theme-dirs " + " ".join(args.theme_dirs) if args.theme_dirs else ""
         options += " --themes " + " ".join(args.themes) if args.themes else ""
-        options += " --debug" if args.debug else ""
+        # options += " --debug" if args.debug else ""
+        options += " --quite" if args.debug else ""
 
         sh(
             django_cmd(
@@ -718,6 +719,7 @@ def watch_assets(options):
     if tasks.environment.dry_run:
         return
 
+    options = ['--quite']
     themes = getattr(options, 'themes', None)
     theme_dirs = getattr(options, 'theme-dirs', [])
 
@@ -735,10 +737,10 @@ def watch_assets(options):
     sass_directories = get_watcher_dirs(theme_dirs, themes)
     observer = PollingObserver()
 
-    CoffeeScriptWatcher().register(observer)
+    # CoffeeScriptWatcher().register(observer)
     SassWatcher().register(observer, sass_directories)
-    XModuleSassWatcher().register(observer, ['common/lib/xmodule/'])
-    XModuleAssetsWatcher().register(observer)
+    # XModuleSassWatcher().register(observer, ['common/lib/xmodule/'])
+    # XModuleAssetsWatcher().register(observer)
 
     print("Starting asset watcher...")
     observer.start()

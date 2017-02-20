@@ -196,6 +196,7 @@
             position: absolute;
             top: 50%;
             width: 80px;
+            text-align: center;
 
             &::after {
               color: rgba(255,255,255, 0.8);
@@ -209,12 +210,19 @@
               text-shadow: 0 -1px rgba(0,0,0, 0.8);
               top: 50%;
             }
+
+            img {
+              display: block;
+              width: 100%;
+
+              :hover {
+                opacity: 0.8;
+                cursor: pointer;
+              }
+            }
           }
 
-          img {
-            display: block;
-            width: 100%;
-          }
+
         }
 
         &:hover, &:focus {
@@ -230,6 +238,39 @@
             }
           }
         }
+      }
+    }
+
+    .register-course-btn {
+      background-color: #ff6600;
+      border-radius: 10px;
+      color: #fff;
+      padding: 15px;
+      font-weight: bold;
+      margin-top: 100px;
+
+      :hover {
+        background-color: #462167;
+      }
+    }
+  }
+
+  .course-summary {
+    text-align: center;
+    background-color: #ebebeb;
+
+    ul {
+      display: inline-block;
+      text-align: center;
+      width: 100%;
+      margin: 0;
+
+      li {
+        font-size: 14px;
+        line-height: 52px;
+        margin-left: 26px;
+        margin-right: 26px;
+        display: inline-block;
       }
     }
   }

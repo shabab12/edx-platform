@@ -622,6 +622,7 @@ def course_about(request, course_id):
 
         context = {
             'course': course,
+            'course_raw_id': str(course.id).replace('course-v1', ''),
             'course_details': course_details,
             'staff_access': staff_access,
             'studio_url': studio_url,
