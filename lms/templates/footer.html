@@ -4,6 +4,7 @@
   from django.core.urlresolvers import reverse
   from django.utils.translation import ugettext as _
   from branding.api import get_footer
+  from branding import api as branding_api
 %>
 <% footer = get_footer(is_secure=is_secure) %>
 <%namespace name='static' file='static_content.html'/>
@@ -18,18 +19,18 @@
     % endif
   >
     <div class="colophon">
-      <nav class="nav-colophon" aria-label="${_('About')}">
-        <ol>
-            % for item_num, link in enumerate(footer['navigation_links'], start=1):
-            <li class="nav-colophon-0${item_num}">
-              <a id="${link['name']}" href="${link['url']}">${link['title']}</a>
-            </li>
-            % endfor
-        </ol>
-      </nav>
+##       <nav class="nav-colophon" aria-label="${_('About')}">
+##         <ol>
+##             % for item_num, link in enumerate(footer['navigation_links'], start=1):
+##             <li class="nav-colophon-0${item_num}">
+##               <a id="${link['name']}" href="${link['url']}">${link['title']}</a>
+##             </li>
+##             % endfor
+##         </ol>
+##       </nav>
 
       <div class="wrapper-logo">
-        <p>
+        <p style="text-align: right">
           <a href="/">
             ## The default logo is a placeholder.
             ## You can either replace this link entirely or update
@@ -38,7 +39,7 @@
             ## can be included in the footer on other sites
             ## (e.g. a blog or marketing front-end) to provide a consistent
             ## user experience.  See the branding app for details.
-            <img alt="organization logo" src="${footer['logo_image']}">
+            <img alt="organization logo" src="${static.url(branding_api.get_logo_url())}" width="120" />
           </a>
         </p>
       </div>
@@ -46,15 +47,15 @@
       ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
       <p class="copyright">${footer['copyright']}</p>
 
-      <nav class="nav-legal" aria-label="${_('Legal')}">
-        <ul>
-          % for item_num, link in enumerate(footer['legal_links'], start=1):
-            <li class="nav-legal-0${item_num}">
-              <a href="${link['url']}">${link['title']}</a>
-            </li>
-          % endfor
-        </ul>
-      </nav>
+##       <nav class="nav-legal" aria-label="${_('Legal')}">
+##         <ul>
+##           % for item_num, link in enumerate(footer['legal_links'], start=1):
+##             <li class="nav-legal-0${item_num}">
+##               <a href="${link['url']}">${link['title']}</a>
+##             </li>
+##           % endfor
+##         </ul>
+##       </nav>
     </div>
 
     ## Please leave this link and use one of the logos provided
