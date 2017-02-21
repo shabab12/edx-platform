@@ -112,6 +112,7 @@ from openedx.core.lib.courses import course_image_url
 
 <section class="course-info">
   <header class="course-profile" style="background-image: url('/asset-v1${course_raw_id}+type@asset+block@${course.banner_image}'); text-align: center">
+      <div class="intro-inner-wrapper">
       % if get_course_about_section(request, course, "video"):
           <a href="#video-modal" class="media" rel="leanModal">
               <div class="hero">
@@ -121,8 +122,9 @@ from openedx.core.lib.courses import course_image_url
               </div>
           </a>
       % endif
+      </div>
 
-      <br/><br/><br/><br/><br/><br/>
+      <br/><br/><br/><br/>
 
       <a class="btn btn-warning register-course-btn register" href="#">سجّل الآن</a>
 
@@ -136,8 +138,6 @@ from openedx.core.lib.courses import course_image_url
 
           <li class="mobile-hidden"><i class="fa fa-globe" aria-hidden="true"></i> ${course.language}</li>
 
-
-
           <li>
               <i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;6&nbsp;أسابيع
           </li>
@@ -150,6 +150,7 @@ from openedx.core.lib.courses import course_image_url
   </div>
 
   <div class="container" style="">
+      <h1>${course.display_name}</h1>
     <div class="details">
       % if staff_access and studio_url is not None:
         <div class="wrap-instructor-info studio-view">

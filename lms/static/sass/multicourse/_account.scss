@@ -196,9 +196,10 @@
   }
 
   .content {
-    @include float(left);
-    @include margin-right($baseline*2);
-    width: 600px;
+    //@include float(left);
+    //@include margin-right($baseline*2);
+    margin: 0 auto;
+    width: 500px;
   }
 
   aside {
@@ -277,6 +278,7 @@
         display: block;
         border-bottom: none;
         padding-bottom: 0;
+        width: 100%;
 
         input, textarea {
           width: 100%;
@@ -459,6 +461,7 @@
     button[type="submit"] {
       @extend %m-btn-primary;
       @extend %t-action2;
+      box-shadow: none;
 
       &:disabled, &.is-disabled {
         opacity: 0.3;

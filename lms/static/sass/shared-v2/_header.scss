@@ -103,12 +103,21 @@
 
     // Style the courseware's slim version of the header
     &.slim {
+        height: 35px;
+        padding: 0;
+
         .wrapper-header {
             height: 60px;
 
-            .logo img {
-                margin-top: 4px;
-                height: 30px;
+            .logo {
+                background-image: none;
+                background-color: transparent;
+                box-shadow: none;
+
+                img {
+                    margin-top: 4px;
+                    height: 30px;
+                }
             }
 
             .course-header {

@@ -30,98 +30,6 @@ student_selected = selected(not staff_selected and not specific_student_selected
 include_special_exams = settings.FEATURES.get('ENABLE_SPECIAL_EXAMS', False) and (course.enable_proctored_exams or course.enable_timed_exams)
 %>
 
-<style>
-.course-tabs{
-    border: none !important;
-    margin-top: 50px !important;
-}
-
-.course-material .course-tabs .tab a:visited.active{
-    background-color: #f9f9f9 !important;
-    color: #383838 !important;
-}
-
-.course-material .course-tabs .tab a:hover{
-    background-color: #f9f9f9 !important;
-    color: #3ccfcf !important;
-}
-
-.course-material .course-tabs .tab a{
-	font-size: 18px;
-font-family: DroidArabicNaskhRegular;
-    font-weight: bold;
-
-}
-
-.wrapper-course-material{
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
-
-.course-index .accordion .course-navigation .button-chapter .group-heading{
-font-family: DroidArabicNaskhRegular;
-    font-weight: bold;
-font-size: 17px;
-color: #34b7b7;
-}
-.accordion-nav .accordion-display-name{
-    font-family: DroidArabicNaskhRegular;
-    font-weight: bold;
-    font-size: 13px;
-}
-.course-navigation .button-chapter{
-color: #34b7b7;
-}
-.discussion ol.course-tabs {
-border:none !important;
-}
-.discussion-article .home-helpgrid .row-title {
-font-size: 16px;
-    font-family: DroidArabicNaskhRegular;
-    font-weight: bold;
-}
-
-.discussion-article .home-helpgrid .row-description {
-font-size: 13px;
-    font-family: DroidArabicNaskhRegular;
-}
-
-.discussion-article .home-header .home-title {
-    font-size: 15px;
-    font-family: DroidArabicNaskhRegular;
-    font-weight: bold;
-    color: #6d6d6d;
-}
-.discussion-body .forum-nav-browse .forum-nav-browse-current {
-font-size: 15px;
-    font-family: DroidArabicNaskhRegular;
-    font-weight: bold;
-    color: #4a4949;
-}
-
-.discussion-body .forum-nav-thread-list-wrapper .forum-nav-filter-main-control {
-font-size: 13px;
-    font-family: DroidArabicNaskhRegular;
-    font-weight: bold;
-    color: #4a4949;
-
-
-}
-.discussion-body .forum-nav-refine-bar .forum-nav-sort-control {
-font-size: 13px;
-    font-family: DroidArabicNaskhRegular;
-    font-weight: bold;
-    color: #4a4949;
-}
-.course-tabs .right .new-post-btn {
-    background-color: #ebebeb !important;
-    border: none;
-    color: #383838 !important;
-    padding: 10px;
-    font-size: 14px !important;
-} 
-</style>
-
 
 % if include_special_exams:
     <%static:js group='proctoring'/>
@@ -181,19 +89,10 @@ font-size: 13px;
             tab_list = get_course_tab_list(request, course)
             tabs_tmpl = static.get_template_path('/courseware/tabs.html')
             %>
-            <ol class="tabs course-tabs" style="margin-top:60px !important;">
+            <ol class="tabs course-tabs">
                 <%include file="${tabs_tmpl}" args="tab_list=tab_list,active_page=active_page,default_tab=default_tab,tab_image=tab_image" />
                 <%block name="extratabs" />
             </ol>
-<script>
-$( document ).ready(function() {
-$( ".tabs li:nth-child(4) a").text("منتدی النقاش")
-$( ".tabs li:nth-child(2) a").text("ابدأ الدورة")
-$(".course-material .course-tabs").css("background-color","#ebebeb")
-
-});
-</script>
-
         </div>
     </nav>
 %endif

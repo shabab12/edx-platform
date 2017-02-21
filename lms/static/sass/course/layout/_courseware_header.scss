@@ -71,12 +71,13 @@
   }
 }
 
-.header-global.slim {
-  box-shadow: 0 1px 2px $shadow-l1;
-  height: auto;
-  padding: ($baseline/4) 0 ($baseline/2) 0;
-  border-bottom: 1px solid $outer-border-color;
-  background: $header-bg;
+.header-global .slim {
+  height: 35px;
+  background: transparent;
+  border: 0 none;
+  box-shadow: none;
+  position: absolute;
+  padding-top: 0;
 
   .wrapper-header {
     padding-top: ($baseline/4);
@@ -127,16 +128,19 @@
   }
 
   h1.logo {
-    margin: 0 ($baseline/2) 0 0;
+    margin: 25px ($baseline/2) 0 0;
     @include padding-right(20px);
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
 
     &:before {
       @extend %faded-vertical-divider;
       content: "";
       display: block;
-      height: 35px;
+      height: 60px;
       position: absolute;
-      @include right(3px);
+      @include right(-15px);
       top: 0;
       width: 1px;
     }
@@ -153,8 +157,12 @@
     }
 
     img {
-      height: 30px;
+      //height: 30px;
     }
+  }
+
+  h1.logo2 {
+    margin: 2px 0 0 39px;
   }
 
   .nav-main,
@@ -170,13 +178,14 @@
     font-weight: 600;
     color: $lighter-base-font-color;
     letter-spacing: 0;
-    margin-top: 9px;
+    margin-top: 50px;
     margin-bottom: 0;
     text-transform: none;
     text-shadow: 0 1px 0 #fff;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    @include margin-left(175px);
 
     .provider {
       font: inherit;

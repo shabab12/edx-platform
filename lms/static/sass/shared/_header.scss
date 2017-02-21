@@ -3,12 +3,12 @@
 
 .header-global {
   @extend %ui-depth1;
-  border-bottom: 1px solid $gray-l1;
-  box-shadow: 0 1px 5px 0 $shadow-l1;
-  background: $header-bg;
+  //border-bottom: 1px solid $gray-l1;
+  //box-shadow: 0 1px 5px 0 $shadow-l1;
+  background: #c8c8c8 none repeat scroll 0 0;
   position: relative;
   width: 100%;
-  height: 120px;
+  height: 165px;
 
   .wrapper-header {
     @include clearfix();
@@ -275,19 +275,22 @@
   .nav-global {
     margin-top: ($baseline*1.5);
     list-style: none;
-    @include margin-left(145px);
-    @include float(left);
+    @include float(right);
+    @include margin-right(40px);
+
     .tab-nav-item{
       display: flex;
       margin: 0px;
       text-transform: none;
       @include float(left);
       justify-content: center;
+
       .tab-nav-link{
         font-size: em(16);
         color: $gray;
         padding: 5px 25px 23px;
         display: inline-block;
+
         &:hover,
         &:focus{
           border-bottom: 4px solid $courseware-border-bottom-color;
@@ -300,7 +303,7 @@
     li,
     div {
       display: inline-block;
-      margin: 0 $baseline+1 0 0;
+      margin: 0 0 0 $baseline+1;
       font-size: em(14);
       font-weight: 600;
       text-transform: uppercase;
@@ -340,6 +343,7 @@
   .nav-courseware {
     @include float(left);
     margin-top: ($baseline*1.5);
+    //@include margin-left(180px);
     list-style: none;
 
     li, div {
@@ -349,11 +353,23 @@
         color: #fff !important;
         font-weight: 600;
         @include padding-right(40px);
-        font-size: 14px;
+        font-size: 16px;
         line-height: 24px;
         //@extend %m-btn-primary;
       }
     }
+  }
+
+  &.slim {
+    height: 35px;
+    background: transparent;
+    border: 0 none;
+    box-shadow: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    //padding: 0 10px 0;
   }
 }
 
@@ -372,7 +388,7 @@
 .view-register .nav-global-04 {
   a {
     text-decoration: none;
-    color: $link-color !important;
+    color: $link-color;
     color: #fff;
   }
 }
@@ -416,17 +432,20 @@
 
   .nav-global {
     @include float(left);
+
     .tab-nav-item{
       display: flex;
       margin: 0px;
       text-transform: none;
       @include float(left);
       justify-content: center;
+
       .tab-nav-link{
         font-size: em(16);
         color: $gray;
         display: inline-block;
         padding: 5px 25px 19px;
+
         &:hover,
         &:focus{
           border-bottom: 4px solid $courseware-border-bottom-color;
@@ -652,7 +671,7 @@
   %default-header-nav {
     margin-top: ($baseline/4);
     list-style: none;
-    @include float(left);
+    @include float(right);
 
     li,
     div {
@@ -669,6 +688,7 @@
         font-weight: 600;
         font-family: $header-sans-serif;
         color: $courseware-navigation-color;
+        font-size: 16px;
 
         &:hover,
         &:focus {
@@ -903,6 +923,6 @@
 
   a {
     text-decoration: none;
-    color: $link-color !important;
+    color: $link-color;
   }
 }
