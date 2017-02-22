@@ -31,13 +31,18 @@
         @include padding-left($baseline*0.75);
         @include border-left(1px solid $gray-d3);
       }
+      
+      a {
+        color: #555;
+        font-weight: bold;
+      }
 
       a,
       a:visited {
         @include padding(($baseline/2), ($baseline*0.75), 13px, ($baseline*0.75));
         @extend %t-title7;
         @extend %t-regular;
-        color: $gray-d1;
+        color: #555;
         display: block;
         text-align: center;
         text-decoration: none;
@@ -167,18 +172,18 @@
 
   .nav-main,
   .nav-global {
-    display: none;
+    //display: none;
   }
 
   h2 {
     display: block;
-    width: 65%;
+    //width: 65%;
     @include float(left);
     font-size: 0.9em;
     font-weight: 600;
     color: $lighter-base-font-color;
     letter-spacing: 0;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 0;
     text-transform: none;
     text-shadow: 0 1px 0 #fff;

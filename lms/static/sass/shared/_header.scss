@@ -21,7 +21,7 @@
 
   h1.logo {
     @include float(left);
-    @include margin(-18px, 39px, 0, 0);
+    @include margin(-55px, 0, 0, 20px);
     position: absolute;
     background-color: #fff;
     padding: 50px 10px;
@@ -35,7 +35,7 @@
 
   h1.logo2 {
     @include float(right);
-    @include margin(-2px, 39px, 0, 0);
+    @include margin(-40px, 0, 0, 20px);
     position: relative;
 
     a {
@@ -45,10 +45,11 @@
 
   nav {
     @include clearfix();
-    height: 40px;
+    height: 0;
     margin: 0 auto;
-    padding: 18px ($baseline/2) 0;
+    padding: 20px 0 70px;
     max-width: grid-width(12);
+    background: transparent linear-gradient(to right, #119c93 0%, #7ee8e1 6%, #04bbaf 18%, #4fe0d2 37%, #01aba0 78%, #74e7fb 93%, #119c95 100%) repeat scroll 0 0;
   }
 
   .left {
@@ -273,10 +274,10 @@
   }
 
   .nav-global {
-    margin-top: ($baseline*1.5);
+    margin-top: 0;
     list-style: none;
     @include float(right);
-    @include margin-right(40px);
+    @include margin-right(10px);
 
     .tab-nav-item{
       display: flex;
@@ -361,8 +362,8 @@
   }
 
   &.slim {
-    height: 35px;
-    background: transparent;
+    height: 0;
+    background: transparent linear-gradient(to right, #119c93 0%, #7ee8e1 6%, #04bbaf 18%, #4fe0d2 37%, #01aba0 78%, #74e7fb 93%, #119c95 100%) repeat scroll 0 0;
     border: 0 none;
     box-shadow: none;
     position: absolute;
