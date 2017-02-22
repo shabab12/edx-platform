@@ -20,12 +20,12 @@ def url_class(is_active):
   %>
   <li class="tab">
   <a href="${tab.link_func(course, reverse)}" class="${tab_class}">
-      % if tab.name == 'المساق':
-          'إبدأ الدورة'
-      % else:
+    % if tab.name == 'Course':
+        إبدأ الدورة
+    %else:
+        ${_(tab.name)}
+    %endif
 
-      % endif:
-      %endif
 
   % if tab_is_active:
   %endif

@@ -140,8 +140,17 @@ from third_party_auth import provider, pipeline
 ##   </header>
 ## </section>
 
+<style>
+    .view-register, .view-login, .view-passwordreset {background-color: #ebebeb}
+    #window-wrap {background-color: #ebebeb}
+    .content-wrapper {background-color: #ebebeb}
+    .view-register .container, .view-register section.outside-app, .view-register .view-profile .profile-self .wrapper-profile-field-account-privacy .u-field-account_privacy, .view-profile .profile-self .wrapper-profile-field-account-privacy .view-register .u-field-account_privacy, .view-register .view-profile .wrapper-profile-sections, .view-profile .view-register .wrapper-profile-sections, .view-register .view-profile .badge-set-display, .view-profile .view-register .badge-set-display, .view-register .introduction, .view-login .container, .view-login section.outside-app, .view-login .view-profile .profile-self .wrapper-profile-field-account-privacy .u-field-account_privacy, .view-profile .profile-self .wrapper-profile-field-account-privacy .view-login .u-field-account_privacy, .view-login .view-profile .wrapper-profile-sections, .view-profile .view-login .wrapper-profile-sections, .view-login .view-profile .badge-set-display, .view-profile .view-login .badge-set-display, .view-login .introduction, .view-passwordreset .container, .view-passwordreset section.outside-app, .view-passwordreset .view-profile .profile-self .wrapper-profile-field-account-privacy .u-field-account_privacy, .view-profile .profile-self .wrapper-profile-field-account-privacy .view-passwordreset .u-field-account_privacy, .view-passwordreset .view-profile .wrapper-profile-sections, .view-profile .view-passwordreset .wrapper-profile-sections, .view-passwordreset .view-profile .badge-set-display, .view-profile .view-passwordreset .badge-set-display, .view-passwordreset .introduction
+    {background-color: #ebebeb}
+
+</style>
+
 <section class="login container">
-  <section role="main" class="content" style="background-color: #ebebeb; padding: 50px 30px 10px;">
+  <section role="main" class="content" style="background-color: #fff; padding: 50px 30px 10px;">
     <form role="form" id="login-form" method="post" data-remote="true" action="/login_ajax" novalidate>
         <h1 class="title" style="font-size: 30px">
           <span class="">تسجيل الدخول</span>
@@ -206,21 +215,12 @@ from third_party_auth import provider, pipeline
         </ol>
       </div>
 
-      <div class="form-actions">
-        <button name="submit" type="submit" id="submit" class="action action-primary action-update login-button">
+      <div class="form-actions" style="text-align: center">
+        <button name="submit" type="submit" id="submit" class="action action-primary action-update login-button" style="width: 160px; border-radius: 20px">
             تسجيل الدخول
         </button>
       </div>
     </form>
-
-      <hr/>
-
-      <div style="text-align: center">
-          <span>ليس لديك حساب؟</span>
-          <a class="btn" href="${reverse('register_user')}">سجل الآن!</a>
-      </div>
-      <p></p>
-
     % if third_party_auth.is_enabled():
 
       <span class="deco-divider">
@@ -247,7 +247,14 @@ from third_party_auth import provider, pipeline
 
     % endif
 
+      <br/>
+
   </section>
+
+    <div style="text-align: center; background-color: #00aaa0; width: 500px; margin: 0 auto; padding: 20px 0">
+        <span>ليس لديك حساب؟</span>
+        <a class="btn" href="${reverse('register_user')}" style="color: #fff;"> &nbsp;سجل الآن!</a>
+    </div>
 
   <aside role="complementary">
 

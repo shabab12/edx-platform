@@ -109,7 +109,17 @@ import calendar
 <br/>
 <br/>
 <br/>
-<section class="register container" style="background-color: #ebebeb; width: 650px; min-width: auto">
+
+<style>
+    .view-register, .view-login, .view-passwordreset {background-color: #ebebeb}
+    #window-wrap {background-color: #ebebeb}
+    .content-wrapper {background-color: #ebebeb}
+    .view-register .container, .view-register section.outside-app, .view-register .view-profile .profile-self .wrapper-profile-field-account-privacy .u-field-account_privacy, .view-profile .profile-self .wrapper-profile-field-account-privacy .view-register .u-field-account_privacy, .view-register .view-profile .wrapper-profile-sections, .view-profile .view-register .wrapper-profile-sections, .view-register .view-profile .badge-set-display, .view-profile .view-register .badge-set-display, .view-register .introduction, .view-login .container, .view-login section.outside-app, .view-login .view-profile .profile-self .wrapper-profile-field-account-privacy .u-field-account_privacy, .view-profile .profile-self .wrapper-profile-field-account-privacy .view-login .u-field-account_privacy, .view-login .view-profile .wrapper-profile-sections, .view-profile .view-login .wrapper-profile-sections, .view-login .view-profile .badge-set-display, .view-profile .view-login .badge-set-display, .view-login .introduction, .view-passwordreset .container, .view-passwordreset section.outside-app, .view-passwordreset .view-profile .profile-self .wrapper-profile-field-account-privacy .u-field-account_privacy, .view-profile .profile-self .wrapper-profile-field-account-privacy .view-passwordreset .u-field-account_privacy, .view-passwordreset .view-profile .wrapper-profile-sections, .view-profile .view-passwordreset .wrapper-profile-sections, .view-passwordreset .view-profile .badge-set-display, .view-profile .view-passwordreset .badge-set-display, .view-passwordreset .introduction
+    {background-color: #ebebeb}
+
+</style>
+
+<section class="register container" style="background-color: #fff; width: 650px; min-width: auto; padding-bottom: 20px">
   <section role="main" class="content">
     <form role="form" id="register-form" method="post" data-remote="true" action="/create_account" novalidate>
 <%
@@ -119,12 +129,8 @@ import calendar
       <%include file="${registration_form}" />
     </form>
 
-      <hr/>
-      <div style="text-align: center">
-          <span> لديك حساب على منصة شباب؟</span>
-          <a class="btn" href="/login${login_query()}">تسجيل الدخول</a>
-      </div>
   </section>
+
 
   <aside role="complementary">
 
@@ -137,6 +143,10 @@ import calendar
 
   </aside>
 </section>
+<div style="text-align: center; background-color: #00aaa0; width: 650px; margin: 0 auto; padding: 20px 0">
+    <span>لديك حساب سابق؟</span>
+    <a class="btn" href="/login${login_query()}" style="color: #fff;">تسجيل الدخول</a>
+</div>
 
 <br/>
 <br/>
