@@ -1177,7 +1177,7 @@ P3P_HEADER = 'CP="Open EdX does not have a P3P policy."'
 
 ############################### PIPELINE #######################################
 
-PIPELINE_ENABLED = True
+PIPELINE_ENABLED = False
 
 STATICFILES_STORAGE = 'openedx.core.storage.ProductionStorage'
 
@@ -1195,7 +1195,7 @@ PIPELINE_CSS_COMPRESSOR = None
 PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.uglifyjs.UglifyJSCompressor'
 
 # Setting that will only affect the edX version of django-pipeline until our changes are merged upstream
-PIPELINE_COMPILE_INPLACE = True
+PIPELINE_COMPILE_INPLACE = False
 
 # Don't wrap JavaScript as there is code that depends upon updating the global namespace
 PIPELINE_DISABLE_WRAPPER = True

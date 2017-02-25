@@ -32,8 +32,8 @@
                 border-radius: 0;
                 padding: 0;
                 box-shadow: 0 1px 0 $white inset, 0 -1px 0 $shadow-l1 inset;
-                background-color: $sidebar-chapter-bg;
-                color: $link-color;
+                background-color: #f6f6f6;
+                color: #1ca3a6;
                 -webkit-font-smoothing: subpixel-antialiased; // this brings back our nice, dark blue
 
                 .group-heading {

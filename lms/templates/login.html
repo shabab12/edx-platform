@@ -101,7 +101,7 @@ from third_party_auth import provider, pipeline
           removeClass('is-disabled').
           attr('aria-disabled', false).
           removeProp('disabled').
-          html("${_('Log into My {platform_name} Account').format(platform_name=platform_name)} <span class='orn-plus'>+</span> ${_('Access My Courses')}");
+##           html("${_('Log into My {platform_name} Account').format(platform_name=platform_name)} <span class='orn-plus'>+</span> ${_('Access My Courses')}");
       }
       else {
         $submitButton.
@@ -192,7 +192,7 @@ from third_party_auth import provider, pipeline
           <li class="field required text" id="field-email">
             <label for="email">${_('E-mail')}</label>
             <input class="" id="email" type="email" name="email" value="" placeholder="${_('example: username@domain.com')}" required aria-required="true" aria-described-by="email-tip" />
-            <span class="tip tip-input" id="email-tip">${_("This is the e-mail address you used to register with {platform}").format(platform=platform_name)}</span>
+            <span class="tip tip-input" id="email-tip">هذا عنوان البريد الإلكتروني الذي استخدمته للتسجيل</span>
           </li>
           <li class="field required password" id="field-password">
             <label for="password">${_('Password')}</label>
@@ -234,12 +234,7 @@ from third_party_auth import provider, pipeline
     % for enabled in provider.Registry.accepting_logins():
       ## Translators: provider_name is the name of an external, third-party user authentication provider (like Google or LinkedIn).
       <button type="submit" class="button button-primary button-${enabled.provider_id} login-${enabled.provider_id}" onclick="thirdPartySignin(event, '${pipeline_url[enabled.provider_id]}');">
-        % if enabled.icon_class:
-        <span class="icon fa ${enabled.icon_class}" aria-hidden="true"></span>
-        % else:
-        <span class="icon" aria-hidden="true"><img class="icon-image" src="${enabled.icon_image.url}" alt="${enabled.name} icon" /></span>
-        % endif
-        ${_('Sign in with {provider_name}').format(provider_name=enabled.name)}
+          تسجيل الدخول
       </button>
     % endfor
 

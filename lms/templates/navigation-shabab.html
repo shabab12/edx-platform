@@ -62,7 +62,7 @@ except:
         </div>
         <nav class="header-global ${"slim" if course else ""}" class="" aria-label="${_('Global')}" style="">
             <h1 class="logo">
-                <a href="${marketing_link('ROOT')}">
+                <a href="http://www.iktshaf.com">
                     <img src="${static.url(branding_api.get_logo_url())}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}" width="130"/>
                 </a>
             </h1>
@@ -87,6 +87,9 @@ except:
                     <li class="item nav-global-01">
                         <a href="${reverse('logout')}" role="menuitem">${_("Sign Out")}</a>
                     </li>
+                    <li class="item nav-global-01">
+                        <a href="${reverse('dashboard')}" role="menuitem" style="background-color: #ff6600; padding: 10px 15px; border-radius: 20px">لوحة المعلومات</a>
+                    </li>
                 </ol>
             % else:
                 <ol class="left list-inline nav-global">
@@ -94,7 +97,7 @@ except:
                         <a class="" href="/login${login_query()}">${_("Sign in")}</a>
                     </li>
                     <li class="item nav-global-04">
-                        <a class="" href="/register${login_query()}" style="background-color: #462167; padding: 10px 20px; border-radius: 20px">سجل الآن</a>
+                        <a class="" href="/register${login_query()}" style="background-color: #ff6600; padding: 10px 20px; border-radius: 20px">سجل الآن</a>
                     </li>
                 </ol>
             % endif

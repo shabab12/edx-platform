@@ -9,7 +9,7 @@
 <% footer = get_footer(is_secure=is_secure) %>
 <%namespace name='static' file='static_content.html'/>
 
-<div class="wrapper wrapper-footer">
+<div class="wrapper wrapper-footer" style="background-color: #363636; padding: 15px 10px 30px;">
   <footer id="footer-openedx" class="grid-container"
     ## When rendering the footer through the branding API,
     ## the direction may not be set on the parent element,
@@ -31,7 +31,7 @@
 
       <div class="wrapper-logo">
         <p style="text-align: right">
-          <a href="/">
+          <a href="http://www.iktshaf.com">
             ## The default logo is a placeholder.
             ## You can either replace this link entirely or update
             ## the FOOTER_ORGANIZATION_IMAGE in Django settings.
@@ -39,13 +39,22 @@
             ## can be included in the footer on other sites
             ## (e.g. a blog or marketing front-end) to provide a consistent
             ## user experience.  See the branding app for details.
-            <img alt="organization logo" src="${static.url(branding_api.get_logo_url())}" width="120" />
+            <img alt="organization logo" src="${static.url('images/logo-white.png')}" width="120" />
           </a>
         </p>
       </div>
+        <style>
+            .footer-social-link {color: #e3e3e3 !important; margin: 0 7px; border: 2px solid #e3e3e3!important; border-radius: 25px; padding: 0 8px}
+        </style>
+        <div class="footer-social" style="text-align: right">
+            <a class="footer-social-link" href="https://twitter.com/iktshaf"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a class="footer-social-link" href="https://www.instagram.com/iktshaf/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <a class="footer-social-link" href="https://business.facebook.com/%D9%83%D9%8A%D9%81-%D8%AA%D8%AE%D8%AA%D8%A7%D8%B1-%D9%85%D8%B3%D8%A7%D8%B1%D9%83-%D8%A8%D8%B9%D8%AF-%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%88%D9%8A%D8%A9-134427119913082/?business_id=501600900003321&ref=page_internal">&nbsp;<i class="fa fa-facebook" aria-hidden="true">&nbsp;</i></a>
+            <a class="footer-social-link" href="https://www.youtube.com/channel/UCnops7I4qcBnPSIv4gAgsfQ"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+        </div>
 
       ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
-      <p class="copyright">${footer['copyright']}</p>
+##       <p class="copyright" style="color: #9a9a9a;">${footer['copyright']}</p>
 
 ##       <nav class="nav-legal" aria-label="${_('Legal')}">
 ##         <ul>
@@ -63,10 +72,10 @@
     ## through an API to partner sites (such as marketing sites or blogs),
     ## which are not technically powered by OpenEdX.
     % if not hide_openedx_link:
-    <div class="footer-about-openedx">
+    <div class="footer-about-openedx" style="margin-top: 35px">
       <p>
         <a href="${footer['openedx_link']['url']}">
-          <img src="${footer['openedx_link']['image']}" alt="${footer['openedx_link']['title']}" width="140" />
+          <img src="${static.url('images/openedx-logo-tag-light.png')}" width="140" />
         </a>
       </p>
     </div>
