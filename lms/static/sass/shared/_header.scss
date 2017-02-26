@@ -322,7 +322,7 @@
 
         &:hover, &:focus, &:active {
           text-decoration: none;
-          color: $link-color;
+          color: #000;
         }
       }
 
@@ -330,7 +330,7 @@
 
         a {
           text-decoration: none;
-          color: $link-color;
+          color: #fff;
         }
       }
     }
