@@ -15,8 +15,8 @@
         # app that handles site status messages
     from status.status import get_site_status_msg
 %>
-<header id="" class="header-global container ${"slim" if is_about_page else ""}" style="padding: 0">
-    <div class="top-nav " style="height: 35px; padding: 0; background: transparent linear-gradient(to right, #119c93 0%, #7ee8e1 6%, #04bbaf 18%, #4fe0d2 37%, #01aba0 78%, #74e7fb 93%, #119c95 100%) repeat scroll 0 0">
+<header id="" class="header-global  ${"slim" if is_about_page else ""}" style="padding: 0">
+    <div class="top-nav " style="margin: 0 auto; max-width: 1180px; height: 35px; padding: 0; background: transparent linear-gradient(to right, #119c93 0%, #7ee8e1 6%, #04bbaf 18%, #4fe0d2 37%, #01aba0 78%, #74e7fb 93%, #119c95 100%) repeat scroll 0 0">
 ##         <div class="wrapper-header" >
 ##             % if user.is_authenticated():
 ##                 <p style="margin-top: -5px; margin-right: 10px">أهلاً <a href="${reverse('dashboard')}" style="color: inherit;"><b>${user.username}</b></a></p>
@@ -52,9 +52,9 @@
                     <li class="item nav-global-01">
                         <a href="${reverse('logout')}" role="menuitem">${_("Sign Out")}</a>
                     </li>
-                    <li class="item nav-global-01">
-                        <a href="${reverse('dashboard')}" role="menuitem" style="background-color: #ff6600; padding: 10px 15px; border-radius: 20px">لوحة المعلومات</a>
-                    </li>
+##                     <li class="item nav-global-01">
+##                         <a href="${reverse('dashboard')}" role="menuitem" style="background-color: #ff6600; padding: 10px 15px; border-radius: 20px">لوحة المعلومات</a>
+##                     </li>
                 </%block>
             </ol>
         % else:

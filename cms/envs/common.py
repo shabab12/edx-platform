@@ -208,7 +208,7 @@ FEATURES = {
     'ORGANIZATIONS_APP': False,
 
     # Show Language selector
-    'SHOW_LANGUAGE_SELECTOR': False,
+    'SHOW_LANGUAGE_SELECTOR': True,
 }
 
 ENABLE_JASMINE = False
