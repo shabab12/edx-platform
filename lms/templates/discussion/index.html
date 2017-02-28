@@ -1,5 +1,5 @@
 ## mako
-
+<%! main_css = "style-main-v1" %>
 <%! main_css = "style-discussion-main" %>
 
 <%page expression_filter="h"/>
@@ -27,6 +27,41 @@ from django.core.urlresolvers import reverse
 <%include file="_discussion_course_navigation.html" args="active_page='discussion'" />
 
 <%block name="content">
+
+    <style>
+        .header-global {
+            height: 165px;
+            background: none !important;
+            border-bottom: 0 none !important;
+            box-shadow: none !important;
+        }
+        .slim {background-color: transparent}
+
+        .slim .logo {
+            float: right;
+        }
+
+        .slim .logo2 {
+            float: left;
+        }
+
+        .slim .course-header {
+            margin-right: 30px !important;
+        }
+        
+        .left {
+            float: left;
+        }
+        .header-global .slim h1.logo::before {background-image: none}
+
+        .slim ol {
+            margin-left: 40px;
+        }
+    </style>
+
+    <%static:css group='style-vendor'/>
+    <%static:css group='${self.attr.main_css}'/>
+
 <section class="discussion container" id="discussion-container"
          data-roles="${roles}"
          data-course-id="${course_id}"
