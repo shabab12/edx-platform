@@ -11,6 +11,7 @@ from datetime import date
 import third_party_auth
 from third_party_auth import pipeline, provider
 import calendar
+from django.conf import settings
 %>
 
 <%block name="pagetitle">${_("Register for {platform_name}").format(platform_name=platform_name)}</%block>
@@ -41,14 +42,14 @@ import calendar
     });
 
     (function() {
-      toggleSubmitButton(true);
+##       toggleSubmitButton(true);
 
       $('#register-form').on('submit', function() {
-        toggleSubmitButton(false);
+##         toggleSubmitButton(false);
       });
 
       $('#register-form').on('ajax:error', function() {
-        toggleSubmitButton(true);
+##         toggleSubmitButton(true);
       });
 
       $('#register-form').on('ajax:success', function(event, json, xhr) {
@@ -57,14 +58,14 @@ import calendar
           nextUrl = json.redirect_url; // Most likely third party auth completion. This trumps 'nextUrl' above.
         }
         if (!isExternal(nextUrl)) {
-          location.href=nextUrl;
+          location.href="/courses/${settings.COURSE_ID_ABOUT_LANDING}/about";
         } else {
-          location.href="${reverse('dashboard')}";
+          location.href="/courses/${settings.COURSE_ID_ABOUT_LANDING}/about";
         }
       });
 
       $('#register-form').on('ajax:error', function(event, jqXHR, textStatus) {
-        toggleSubmitButton(true);
+##         toggleSubmitButton(true);
         json = $.parseJSON(jqXHR.responseText);
         $('.status.message.submission-error').addClass('is-shown').focus();
         $('.status.message.submission-error .message-copy').html(json.value).stop().css("display", "block");
@@ -75,7 +76,7 @@ import calendar
 
     function thirdPartySignin(event, url) {
       event.preventDefault();
-      window.location.href = url;
+      window.location.href = "/courses/${settings.COURSE_ID_ABOUT_LANDING}/about";
     }
 
     function toggleSubmitButton(enable) {
