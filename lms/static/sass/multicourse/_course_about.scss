@@ -319,6 +319,7 @@
     @include margin-right(flex-gutter());
     width: flex-grid(8);
     font: normal 1em/1.6em $serif;
+    @include margin-left(50px);
 
     h2 {
       margin-top: ($baseline*1.5);
