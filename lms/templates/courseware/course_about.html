@@ -128,7 +128,7 @@ from student.models import CourseEnrollment
       <br/><br/><br/><br/>
 
       % if request.user.is_authenticated() and CourseEnrollment.objects.filter(user=request.user, course_id=course.id, is_active=True).exists():
-          <a class="btn btn-warning register-course-btn" href="/courses/${settings.COURSE_ID_ABOUT_LANDING}/info">سجّل الآن</a>
+          <a class="btn btn-warning register-course-btn" href="/courses/${settings.COURSE_ID_ABOUT_LANDING}/info">إبدأ الآن</a>
       %else:
           <a class="btn btn-warning register-course-btn register" href="#">سجّل الآن</a>
       % endif
@@ -266,7 +266,7 @@ from student.models import CourseEnrollment
         <br/>
         % if request.user.is_authenticated() and CourseEnrollment.objects.filter(user=request.user, course_id=course.id, is_active=True).exists():
             <div style="text-align: center">
-                <a class="btn btn-warning register-course-btn" href="/courses/${settings.COURSE_ID_ABOUT_LANDING}/info" style="background-color: #ff6600; color: #fff; border-radius: 20px; padding: 5px 15px; font-weight: bold">سجّل الآن</a>
+                <a class="btn btn-warning register-course-btn" href="/courses/${settings.COURSE_ID_ABOUT_LANDING}/info" style="background-color: #ff6600; color: #fff; border-radius: 20px; padding: 5px 15px; font-weight: bold">إبدأ الآن</a>
             </div>
         % else:
             <div style="text-align: center">
